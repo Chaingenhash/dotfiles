@@ -1,0 +1,8 @@
+# overwrites default wiremix configuration
+# defaults: https://github.com/tsowell/wiremix/blob/main/wiremix.toml
+
+[names]
+endpoint = ["{node:node.description}", "{device:device.nick}"]
+
+[char_sets.default]
+default_device = "⮞"
