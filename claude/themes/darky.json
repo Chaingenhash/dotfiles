@@ -1,0 +1,7 @@
+{
+  "name": "darky",
+  "base": "dark",
+  "overrides": {
+    "claude": "rgb(255,119,87)"
+  }
+}

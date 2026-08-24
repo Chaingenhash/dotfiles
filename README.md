@@ -9,6 +9,7 @@ Only files that diverge from the Omarchy defaults in
 | Path in repo | Installs to |
 |---|---|
 | `home/.*` | `~/` |
+| `claude/` | `~/.claude/` (see `claude/README.md`) |
 | `icons/default/` | `~/.icons/default/` |
 | everything else | `~/.config/<same path>` |
 
@@ -20,7 +21,8 @@ cd ~/dotfiles
 for f in home/.*; do [ -f "$f" ] && cp "$f" ~/; done
 cp -r icons/default ~/.icons/
 rsync -a --exclude README.md --exclude .git --exclude .gitignore \
-      --exclude home --exclude icons ./ ~/.config/
+      --exclude home --exclude icons --exclude claude ./ ~/.config/
+cp -r claude/settings*.json claude/themes ~/.claude/
 ```
 
 ## What's customized
@@ -36,6 +38,7 @@ rsync -a --exclude README.md --exclude .git --exclude .gitignore \
   alacritty carries an explicit Tokyo Night palette.
 - **shell** — `home/.zshrc` mirrors Omarchy's bash setup in zsh (fzf-tab,
   starship, mise, zoxide, a zsh-safe `tsl`).
+- **claude code** — plugin set, hooks, theme; see `claude/README.md`.
 - **misc** — btop layout, lazygit nerd fonts v3, mise toolchain pins,
   wiremix device naming, Bibata-Modern-Ice cursor, chromium theme extension.
 
