@@ -1,0 +1,52 @@
+#!/bin/bash
+# hypr-session-restore — one-shot boot correction for saved session layout.
+#
+# Runs once at Hyprland startup (exec-once from session.conf). Waits for the
+# windows recorded in ~/.config/hypr/session-layout.tsv to spawn, then moves
+# each to its saved workspace and each workspace to its saved monitor.
+# Spawn rules alone are racy at boot (rules miss late windows, workspaces get
+# created on the focused monitor); this corrects the final state. After it
+# runs, nothing pins anything — move windows/workspaces freely.
+
+set -uo pipefail
+
+LAYOUT="$HOME/.config/hypr/session-layout.tsv"
+[[ -f $LAYOUT ]] || exit 0
+
+# Expected window count per class
+declare -A EXPECT
+while IFS=$'\t' read -r class ws mon; do
+  [[ -z ${class:-} ]] && continue
+  EXPECT[$class]=$(( ${EXPECT[$class]:-0} + 1 ))
+done <"$LAYOUT"
+
+# Wait (max 45s) until every expected window exists
+for _ in $(seq 1 90); do
+  clients="$(hyprctl clients -j 2>/dev/null)" || clients='[]'
+  ok=1
+  for class in "${!EXPECT[@]}"; do
+    have=$(jq --arg c "$class" '[.[] | select(.class == $c)] | length' <<<"$clients")
+    (( have < EXPECT[$class] )) && { ok=0; break; }
+  done
+  (( ok )) && break
+  sleep 0.5
+done
+
+# Snapshot clients once; assign nth window of a class to nth saved slot
+clients="$(hyprctl clients -j)"
+declare -A IDX
+while IFS=$'\t' read -r class ws mon; do
+  [[ -z ${class:-} ]] && continue
+  i=${IDX[$class]:-0}
+  IDX[$class]=$((i + 1))
+  addr=$(jq -r --arg c "$class" --argjson i "$i" \
+    '[.[] | select(.class == $c)] | sort_by(.address) | .[$i].address // empty' <<<"$clients")
+  [[ -z $addr ]] && continue
+  hyprctl dispatch movetoworkspacesilent "$ws,address:$addr" >/dev/null
+done <"$LAYOUT"
+
+# Move each workspace to its saved monitor (first saved monitor per workspace)
+cut -f2,3 "$LAYOUT" | awk -F'\t' '!seen[$1]++' | while IFS=$'\t' read -r ws mon; do
+  [[ -z $ws || -z $mon ]] && continue
+  hyprctl dispatch moveworkspacetomonitor "$ws $mon" >/dev/null
+done
