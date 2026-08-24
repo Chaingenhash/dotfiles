@@ -1,0 +1,4 @@
+# Desktop-only hardware packages (AMD CPU + Nvidia GPU).
+amd-ucode
+nvidia-open
+nvidia-settings

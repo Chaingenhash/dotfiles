@@ -1,0 +1,39 @@
+# Shared AUR packages.
+# Install: grep -vE '^#|^$' packages/aur.txt | yay -S --needed -
+
+## dev tools
+android-sdk
+android-sdk-cmdline-tools-latest
+android-sdk-platform-tools
+antigravity
+antigravity-ide
+dbeaver-ce-bin
+gemini-cli-git
+insomnia
+lazyssh
+postman-bin
+restish
+vscodium-bin
+windsurf
+
+## apps
+curseforge-appimage
+disktui
+firefox-bin
+plugin-autenticacao-gov-pt
+qbittorrent-qt5
+system-monitoring-center
+
+## desktop / hyprland extras
+bibata-cursor-theme-bin
+hyprmon-bin
+wayfreeze-git
+xremap-x11-bin
+
+## retro gaming
+retroarch-assets-git
+
+## diagnostics / benchmarks (one-offs, prune freely)
+jstest-gtk-git
+phoronix-test-suite
+unixbench

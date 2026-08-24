@@ -1,0 +1,101 @@
+# Shared packages — official Arch repos + the Omarchy package repo.
+# Install: grep -vE '^#|^$' packages/pacman.txt | sudo pacman -S --needed -
+
+## shells & terminal
+fish
+zsh
+ghostty
+
+## dev tools
+composer
+go
+jadx
+jdk17-openjdk
+neovim
+nginx
+opencode
+strace
+wget
+yq
+
+## editors / IDEs
+cursor-bin
+visual-studio-code-bin
+zed
+
+## apps
+freerdp
+krita
+telegram-desktop
+vivaldi
+
+## system utils
+bluez-utils
+duplicity
+earlyoom
+efibootmgr
+htop
+ntfs-3g
+nwg-displays
+psensor
+
+## fonts
+noto-fonts-extra
+ttf-cascadia-mono-nerd
+
+## input remapping
+interception-tools
+keyd
+linuxconsole
+snixembed
+
+## gaming
+gamescope
+minecraft-launcher
+steam
+winetricks
+
+## retro gaming (retroarch)
+retroarch
+retroarch-assets-glui
+retroarch-assets-ozone
+retroarch-assets-xmb
+libretro-beetle-pce
+libretro-beetle-pce-fast
+libretro-beetle-psx
+libretro-beetle-psx-hw
+libretro-beetle-supergrafx
+libretro-blastem
+libretro-bsnes
+libretro-bsnes2014
+libretro-bsnes-hd
+libretro-desmume
+libretro-dolphin
+libretro-fbneo-git
+libretro-flycast
+libretro-gambatte
+libretro-genesis-plus-gx
+libretro-kronos
+libretro-mame
+libretro-mame2016
+libretro-melonds
+libretro-mesen
+libretro-mesen-s
+libretro-mgba
+libretro-mupen64plus-next
+libretro-nestopia
+libretro-overlays
+libretro-parallel-n64
+libretro-picodrive
+libretro-play
+libretro-ppsspp
+libretro-sameboy
+libretro-scummvm
+libretro-shaders-slang
+libretro-snes9x
+libretro-yabause
+
+## diagnostics / benchmarks (one-offs, prune freely)
+evtest
+sysbench
+wev

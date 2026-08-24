@@ -16,6 +16,7 @@ machine-specific (monitors, keyboard layout, bindings, waybar) lives under
 | `bin/` | `~/.local/bin/` |
 | `claude/` | `~/.claude/` (see `claude/README.md`) |
 | `icons/default/` | `~/.icons/default/` |
+| `packages/` | not installed as files — package manifests (see Packages) |
 | `hosts/<machine>/` | `~/.config/<same path>` (overlay, after base) |
 | everything else | `~/.config/<same path>` |
 
@@ -39,10 +40,26 @@ cp -r icons/default ~/.icons/
 mkdir -p ~/.local/bin && cp bin/* ~/.local/bin/
 rsync -a --exclude README.md --exclude .git --exclude .gitignore \
       --exclude home --exclude icons --exclude claude --exclude bin \
-      --exclude hosts ./ ~/.config/
-rsync -a hosts/$HOST/ ~/.config/
+      --exclude hosts --exclude packages ./ ~/.config/
+rsync -a --exclude packages hosts/$HOST/ ~/.config/
 cp -r claude/settings*.json claude/themes ~/.claude/
 ```
+
+## Packages
+
+Apps I install on top of Omarchy, as pacman/yay manifests (sectioned,
+comments allowed). Shared lists in `packages/`, hardware-specific ones in
+`hosts/<machine>/packages/`:
+
+```sh
+grep -vhE '^#|^$' packages/pacman.txt hosts/$HOST/packages/pacman.txt 2>/dev/null \
+  | sudo pacman -S --needed -
+grep -vhE '^#|^$' packages/aur.txt hosts/$HOST/packages/aur.txt 2>/dev/null \
+  | yay -S --needed -
+```
+
+Names like `cursor-bin`/`zed` resolve from the Omarchy package repo when on
+Omarchy; on vanilla Arch move them to the AUR list.
 
 On the **desktop**, `hypr/autostart.conf` sources `~/.config/hypr/session.conf`,
 which is generated and not tracked — create it before the first reload:
