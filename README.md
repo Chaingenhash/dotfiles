@@ -59,7 +59,25 @@ grep -vhE '^#|^$' packages/aur.txt hosts/$HOST/packages/aur.txt 2>/dev/null \
 ```
 
 Names like `cursor-bin`/`zed` resolve from the Omarchy package repo when on
-Omarchy; on vanilla Arch move them to the AUR list.
+Omarchy; on vanilla Arch move them to the AUR list. Omarchy's own base list
+(`~/.local/share/omarchy/install/*.packages`) is never duplicated here —
+install Omarchy first, then these.
+
+Four things no manifest can express:
+
+```sh
+# zsh Tab completion menu, sourced at the end of home/.zshrc
+git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
+
+# tmux plugin manager; then prefix + I inside tmux fetches resurrect/continuum
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# toolchains pinned in mise/config.toml (node 25.9.0, flutter latest)
+mise install
+
+# Cartao de Cidadao, flatpak build -- the AUR package is the other half
+flatpak install flathub pt.gov.autenticacao
+```
 
 On the **desktop**, `hypr/autostart.conf` sources `~/.config/hypr/session.conf`,
 which is generated and not tracked — create it before the first reload:

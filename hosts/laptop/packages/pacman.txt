@@ -1,0 +1,12 @@
+# Laptop-only hardware packages (Intel CPU + iGPU, FocalTech fingerprint).
+intel-ucode
+intel-gpu-tools
+vulkan-headers
+libfprint-git
+
+# virtual camera
+v4l2loopback-dkms
+
+# diagnostics
+usbutils
+stress-ng

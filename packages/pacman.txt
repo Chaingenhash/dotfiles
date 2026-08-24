@@ -7,10 +7,13 @@ zsh
 ghostty
 
 ## dev tools
+cmake
 composer
 go
 jadx
 jdk17-openjdk
+maven
+dotnet-sdk
 neovim
 nginx
 opencode
@@ -24,13 +27,16 @@ visual-studio-code-bin
 zed
 
 ## apps
+flatpak
 freerdp
 krita
+scummvm
 telegram-desktop
 vivaldi
 
 ## system utils
 bluez-utils
+clamav
 duplicity
 earlyoom
 efibootmgr
@@ -41,6 +47,7 @@ psensor
 
 ## fonts
 noto-fonts-extra
+ttf-iosevka-nerd
 ttf-cascadia-mono-nerd
 
 ## input remapping
@@ -94,6 +101,13 @@ libretro-scummvm
 libretro-shaders-slang
 libretro-snes9x
 libretro-yabause
+
+## portuguese cartao de cidadao
+# Pairs with plugin-autenticacao-gov-pt in aur.txt.
+pcsclite
+
+## local audio transcription
+whisper-cpp
 
 ## diagnostics / benchmarks (one-offs, prune freely)
 evtest

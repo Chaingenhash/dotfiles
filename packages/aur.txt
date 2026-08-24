@@ -2,6 +2,7 @@
 # Install: grep -vE '^#|^$' packages/aur.txt | yay -S --needed -
 
 ## dev tools
+android-studio
 android-sdk
 android-sdk-cmdline-tools-latest
 android-sdk-platform-tools
@@ -11,12 +12,14 @@ dbeaver-ce-bin
 gemini-cli-git
 insomnia
 lazyssh
+sshm-bin
 postman-bin
 restish
 vscodium-bin
 windsurf
 
 ## apps
+brave-bin
 curseforge-appimage
 disktui
 firefox-bin

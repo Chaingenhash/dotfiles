@@ -1,0 +1,5 @@
+# Laptop-only AUR packages.
+#
+# The laptop has bibata-cursor-theme (source build) where the shared list has
+# bibata-cursor-theme-bin. Same theme, same files -- installing the shared list
+# here wants to replace it. Pick one before running both lists on this machine.
