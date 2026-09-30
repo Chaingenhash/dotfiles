@@ -71,3 +71,6 @@ if command -v fzf &>/dev/null; then
   [[ -f /usr/share/fzf/key-bindings.zsh ]] && source /usr/share/fzf/key-bindings.zsh
 fi
 [[ -f ~/.zsh/fzf-tab/fzf-tab.plugin.zsh ]] && source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
+
+# --- lazygit workspace picker (lg) ---
+[[ -f ~/.zsh/lazygit-workspace.zsh ]] && source ~/.zsh/lazygit-workspace.zsh

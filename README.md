@@ -13,6 +13,7 @@ machine-specific (monitors, keyboard layout, bindings, waybar) lives under
 | Path in repo | Installs to |
 |---|---|
 | `home/.*` | `~/` |
+| `home/.zsh/` | `~/.zsh/` (sourced by `.zshrc`) |
 | `bin/` | `~/.local/bin/` |
 | `claude/` | `~/.claude/` (see `claude/README.md`) |
 | `icons/default/` | `~/.icons/default/` |
@@ -36,6 +37,7 @@ cd ~/dotfiles
 HOST=laptop   # or: desktop
 
 for f in home/.*; do [ -f "$f" ] && cp "$f" ~/; done
+mkdir -p ~/.zsh && cp -r home/.zsh/. ~/.zsh/
 cp -r icons/default ~/.icons/
 mkdir -p ~/.local/bin && cp bin/* ~/.local/bin/
 rsync -a --exclude README.md --exclude .git --exclude .gitignore \
@@ -106,8 +108,15 @@ the windows have spawned. Nothing is pinned afterwards. Requires `jq`.
 - **terminals** — ghostty default (`xdg-terminals.list`), OSC52 toast off;
   alacritty carries an explicit Tokyo Night palette.
 - **shell** — `home/.zshrc` mirrors Omarchy's bash setup in zsh (fzf-tab,
-  starship, mise, zoxide, a zsh-safe `tsl`, `lg`/`ldk` aliases; `ls` → eza
+  starship, mise, zoxide, a zsh-safe `tsl`, the `ldk` alias; `ls` → eza
   comes from the sourced Omarchy aliases).
+- **lg** — `home/.zsh/lazygit-workspace.zsh` makes lazygit workspace-aware,
+  for projects split across many repos. A `.lgspace` file in a parent dir
+  lists its repos; `lg` then opens a repo picker there and plain lazygit
+  once you are inside one of them. Each workspace also gets its own lazygit
+  state dir, so the recent-repos popup only ever lists that project. Run
+  `lg -h` for the full contract. Supersedes the old `lg=lazygit` alias —
+  unknown arguments are passed straight through.
 - **claude code** — plugin set, hooks, theme; see `claude/README.md`.
 - **opencode** — plugin pins (gemini-auth, superpowers).
 - **misc** — btop layout, lazygit nerd fonts v3, mise toolchain pins,
