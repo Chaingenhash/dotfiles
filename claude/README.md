@@ -10,11 +10,32 @@ else in `~/.claude/` is runtime state (sessions, transcripts, caches,
 | `statusline.sh` | two-line statusline: context %, rate limits, prompt cache, cost, model/effort, cwd/branch/PR |
 | `settings.local.json` | machine-local permission allowlist |
 | `themes/darky.json` | dark theme with an orange accent |
+| `mods/md-preview/` | mod: `.md` paths in replies become links that open a rendered preview pane |
 
 ## Plugins
 
 Declared in `settings.json` and reinstalled by Claude Code on first run:
 `caveman`, `superpowers`, `ui-ux-pro-max`, `frontend-design`.
+
+## Mods
+
+Local mods, loaded from disk via `CLAUDE_CODE_PLUGIN_DIRS` in the `env` block
+of `settings.json` (never published to a marketplace or org library, so only
+this machine loads them; add more folders with `:`):
+
+- **md-preview** — rewrites `.md` paths in assistant replies (backticked,
+  spaces allowed; bare, without spaces) into links when the file exists.
+  A single click (fullscreen layout) opens a docked pane with the file rendered
+  as Markdown, re-read on change every 1.5 s. Ctrl+click still opens it
+  normally. `/md-preview <path>` opens one by hand.
+
+  ```sh
+  claude plugin validate ~/.claude/mods/md-preview
+  claude plugin test ~/.claude/mods/md-preview
+  ```
+
+  The engine writes `.claude-plugin/types/` on load (gitignored);
+  `tsconfig.json` extends it for `tsc -p`.
 
 ## Skills
 

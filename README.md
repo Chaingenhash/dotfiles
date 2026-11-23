@@ -44,7 +44,7 @@ rsync -a --exclude README.md --exclude .git --exclude .gitignore \
       --exclude home --exclude icons --exclude claude --exclude bin \
       --exclude hosts --exclude packages ./ ~/.config/
 rsync -a --exclude packages hosts/$HOST/ ~/.config/
-cp -r claude/settings*.json claude/themes ~/.claude/
+cp -r claude/settings*.json claude/themes claude/mods ~/.claude/
 ```
 
 ## Packages

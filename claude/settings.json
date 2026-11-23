@@ -58,5 +58,8 @@
         ]
       }
     ]
+  },
+  "env": {
+    "CLAUDE_CODE_PLUGIN_DIRS": "~/.claude/mods/md-preview"
   }
 }

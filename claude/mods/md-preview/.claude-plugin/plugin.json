@@ -1,0 +1,1 @@
+{ "name": "md-preview", "version": "0.1.0", "description": "Click a .md path in a reply to preview it rendered in a side pane", "types": "./types/index.d.ts" }
