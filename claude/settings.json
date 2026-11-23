@@ -28,7 +28,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "bash \"/home/guilherme/.claude/plugins/cache/caveman/caveman/84cc3c14fa1e/hooks/caveman-statusline.sh\""
+    "command": "bash \"/home/guilherme/.claude/statusline.sh\"",
+    "padding": 0
   },
   "tui": "fullscreen",
   "theme": "dark",
