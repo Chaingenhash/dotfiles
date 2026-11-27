@@ -65,11 +65,14 @@ Omarchy; on vanilla Arch move them to the AUR list. Omarchy's own base list
 (`~/.local/share/omarchy/install/*.packages`) is never duplicated here —
 install Omarchy first, then these.
 
-Four things no manifest can express:
+Five things no manifest can express:
 
 ```sh
 # zsh Tab completion menu, sourced at the end of home/.zshrc
 git clone https://github.com/Aloxaf/fzf-tab ~/.zsh/fzf-tab
+
+# herdr's only plugin (Lantern); config.toml itself is in herdr/
+herdr plugin install aigorahub/herdr-lantern
 
 # tmux plugin manager; then prefix + I inside tmux fetches resurrect/continuum
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
